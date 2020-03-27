@@ -16,18 +16,20 @@ class Albums extends Component {
             <div className="album-container">
 
                 {this.props.albums && this.props.albums.map(albums => {
-                    {
-                        console.log(this.props.albums)}
-                    return <Element
-                        key={albums._id}
-                        title={albums.title}
-                        image={albums.image}
-                        isPublished={albums.isPublished}
-                        pathRoute={`/tracks/${albums._id}?album=${albums.title}&artist=${albums.artist.name}`}
-                        user={this.props.user}
-                        remove={() => this.props.deleteAlbum({id:albums._id,artistId:this.props.match.params.id})}
-                        publish={() => this.props.publish({id:albums._id,artistId:this.props.match.params.id})}
-                    />
+
+                    return<div className="d-flex flex-column align-items-center" key={albums._id}>
+                        <h2>Год:{albums.year}</h2>
+                        <Element
+
+                            title={albums.title}
+                            image={albums.image}
+                            isPublished={albums.isPublished}
+                            pathRoute={`/tracks/${albums._id}?album=${albums.title}&artist=${albums.artist.name}`}
+                            user={this.props.user}
+                            remove={() => this.props.deleteAlbum({id:albums._id,artistId:this.props.match.params.id})}
+                            publish={() => this.props.publish({id:albums._id,artistId:this.props.match.params.id})}
+                        />
+                    </div>
                 })}
 
             </div>
